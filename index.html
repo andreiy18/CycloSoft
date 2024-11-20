@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f0f4f8; /* Fondo ligeramente gris-azulado */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        header .language-buttons, header .social-logos {
+            display: flex;
+            gap: 10px;
+        }
+
+        header img {
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        header .language-buttons img {
+            width: 50px;
+            height: 30px;
+        }
+
+        header .social-logos img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .Logo {
+            width: 200px;
+            height: 200px;
+        }
+
+        .PrimerDiv {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tabla-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Espaciado entre las tablas */
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        table {
+            width: 90%; /* Ancho de las tablas */
+            border-collapse: collapse;
+            border: 1px solid #ccc; /* Bordes suaves */
+            background-color: #fff; /* Fondo blanco */
+        }
+
+        th {
+            background-color: #e0e7ef; /* Fondo gris-azulado claro para encabezados */
+            text-align: center;
+            font-size: 20px;
+            padding: 15px;
+            border-bottom: 2px solid #ccc; /* Separador inferior */
+        }
+
+        td {
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #ccc; /* Bordes suaves entre celdas */
+        }
+
+        details summary {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            position: relative;
+            padding-right: 20px; /* Espacio para el "+" a la derecha */
+        }
+
+        details summary::after {
+            content: "+"; /* Agrega el "+" después del texto */
+            position: absolute;
+            right: 0; /* Posición a la derecha del texto */
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        details summary:hover {
+            text-decoration: underline; /* Resaltar cuando se pasa el cursor */
+        }
+
+        p {
+            margin: 10px 0 0 20px;
+            font-size: 16px; /* Texto de los detalles */
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            resize: vertical;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .comments {
+            margin-top: 20px;
+        }
+
+        .comment {
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .divextra {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+        }
+
+        /* Estilos para el índice */
+        .indice {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e7ef; /* Fondo gris-azulado claro */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .indice a {
+            display: block;
+            margin: 5px 0;
+            color: #333;
+            text-decoration: none;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .indice a:hover {
+            background-color: #d0d7df; /* Fondo gris-azulado más oscuro al pasar el cursor */
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="language-buttons">
+            <p>Seleccione un idioma / Select a language</p>
+            <img src="imagenes/eng.png" alt="English" onclick="showLanguageContent('english')" />
+            <img src="imagenes/mex.png" alt="Español" onclick="showLanguageContent('spanish')" />
+        </div>
+        <div class="social-logos">
+            <a href="https://www.instagram.com/cyclo.soft/profilecard/?igsh=ZXdtcmJwemRmbnY0"><img src="imagenes/insta.jpg" alt="Instagram" /></a>
+            <a href="https://www.facebook.com/profile.php?id=61566663104949"><img src="imagenes/face.png" alt="Facebook" /></a>
+        </div>
+    </header>
+
+    <!-- Mensajes de bienvenida -->
+    <div id="welcome-spanish" class="PrimerDiv" style="display: none;">
+        <img src="imagenes/logo.jpg" class="Logo" alt="Logo">
+        <h1>Bienvenido</h1>
+        <br>
+        <div class="indice">
+            <h2>Índice</h2>
+            <a href="#prototyping-spanish">Modelo Prototipos (Español)</a>
+            <a href="#scrum-spanish">Modelo Scrum (Español)</a>
+            <a href="#spiral-spanish">Modelo Espiral (Español)</a>
+        </div>
+    </div>
+    <div id="welcome-english" class="PrimerDiv" style="display: none;">
+        <img src="imagenes/logo.jpg" class="Logo" alt="Logo">
+        <h1>Welcome</h1>
+        <br>
+        <div class="indice">
+            <h2>Índice</h2>
+            <a href="#prototyping-english">Prototyping Model (English)</a>
+            <a href="#scrum-english">Scrum Model (English)</a>
+            <a href="#spiral-english">Spiral Model (English)</a>
+        </div>
+    </div>
+
+    <!-- Contenedor de tablas -->
+    <div class="tabla-container">
+        <!-- Tablas en español -->
+        <table id="prototyping-spanish" class="spanish-table">
+            <tr><th colspan="2"><h2>Modelo Prototipos</h2><p>(introducción)</p></th></tr>
+            <tr><td><details><summary>Esquema del modelo de ciclo de vida</summary><p>Contenido del esquema del modelo de ciclo de vida.</p></details></td></tr>
+            <tr><td><details><summary>Características</summary>
+                <ul>
+                    <li><strong>Tiempo:</strong> El prototipo se desarrolla en menos tiempo para poder ser probado o testeado.</li>
+                    <li><strong>Coste:</strong> La inversión en un modelo de prototipo es ajustada, lo que requiere un uso óptimo de los recursos.</li>
+                    <li><strong>Conciso:</strong> El prototipo debe incluir los requisitos y características básicas de la aplicación para poder evaluar su funcionamiento y utilidad.</li>
+                    <li><strong>Evolutivo:</strong> El prototipo evoluciona gracias a la interacción con los usuarios.</li>
+                    <li><strong>Funcional:</strong> El prototipo es una aplicación que funciona.</li>
+                  </ul>
+                  </details></td></tr>
+            <tr><td><details><summary>Ventajas</summary>
+                <ul> <li>Facilita la comunicación entre los desarrolladores y el cliente, ya que proporciona una representación visual y funcional del sistema.</li> <li>Permite la detección temprana de errores y problemas, lo que ayuda a reducir los costos y los riesgos asociados con el desarrollo de software.</li> <li>Facilita la incorporación de cambios en los requisitos y las expectativas del cliente, lo que aumenta la satisfacción del cliente y la probabilidad de éxito del proyecto.</li> <li>Los prototipos pueden ser reutilizados en la fase de desarrollo, lo que puede acelerar el proceso y reducir el tiempo total de desarrollo.</li> </ul>
+            </details></td></tr>
+            <tr><td><details><summary>Desventajas</summary>
+                <ul><li>Pueden consumir más tiempo y recursos en comparación con otros modelos de desarrollo, ya que requiere la creación y revisión de múltiples prototipos.</li> <li>Existe el riesgo de que los desarrolladores se centren en la creación de prototipos en lugar de abordar los aspectos fundamentales del sistema.</li> <li>Los clientes pueden tener expectativas poco realistas respecto al tiempo y los recursos necesarios para desarrollar el producto final, ya que los prototipos pueden dar una impresión de progreso rápido.</li> <li>Puede haber una falta de documentación y planificación adecuadas, lo que puede afectar la calidad y la estabilidad del producto final.</details></td></tr></ul>
+            <tr><td><details><summary>Casos prácticos</summary><ul> <li><strong>Diseño de una página web personal:</strong> Dibuja un esquema simple en papel, definiendo dónde irán el portafolio, las habilidades y el formulario de contacto. Luego, usa WordPress o Wix para crear el sitio web de manera rápida sin necesidad de saber programar.</li> <li><strong>Aplicación de pedidos para restaurante:</strong> Haz un diagrama del flujo de pedidos y utiliza Glide para crear una app web desde una hoja de Google Sheets. Puedes incluir menú, carrito de compras y sistema de pedidos sin escribir código.</li> <li><strong>Plataforma de gestión de tareas colaborativa:</strong> Utiliza Notion para crear un workspace completo con bases de datos relacionales, kanban boards y documentación del proyecto. Complementa con integraciones usando Make (antes Integromat).</li> <li><strong>App de recordatorios simples:</strong> Aprovecha Bubble.io para crear una aplicación web completa con sistema de usuarios, notificaciones y recordatorios personalizados sin necesidad de programar.</li> <li><strong>Plataforma de donaciones para ONG:</strong> Implementa la solución usando Webflow + Stripe para crear una plataforma de donaciones profesional con pagos integrados y diseño personalizado.</li> <li><strong>Sistema de reservas para hotel:</strong> Utiliza Softr para crear una aplicación web conectada a Airtable, permitiendo gestionar reservas, disponibilidad y pagos de manera visual.</li> <li><strong>App de seguimiento de la salud:</strong> Implementa la solución con Adalo, que permite crear apps nativas para iOS/Android con sistema de usuarios, métricas y gráficos sin código.</li> <li><strong>Sistema de pagos en comercio local:</strong> Utiliza FlutterFlow para crear una app móvil con integración de pagos, gestión de usuarios y dashboard administrativo de manera visual.</li> <li><strong>Sistema de gestión de inventarios:</strong> Implementa la solución con AppSheet, creando una app personalizada desde Google Sheets con escáner de códigos de barras y alertas automáticas.</li> <li><strong>Aplicación de aprendizaje de idiomas:</strong> Desarrolla la app usando Thunkable, que permite crear aplicaciones móviles educativas con elementos interactivos, audio y gamificación sin necesidad de código.</li> </ul></details></td></tr>
+        </table>
+        <table id="scrum-spanish" class="spanish-table">
+            <tr><th colspan="2"><h2>Modelo Scrum</h2><p>(introducción)</p></th></tr>
+            <tr><td><details><summary>Esquema del modelo de ciclo de vida</summary><p>Contenido del esquema del modelo de ciclo de vida.</p></details></td></tr>
+            <tr><td><details><summary>Características</summary><p>Descripción de las características del modelo de prototipos.</p></details></td></tr>
+            <tr><td><details><summary>Ventajas</summary><p>Descripción de las ventajas del modelo de prototipos.</p> </details></td></tr>
+            <tr><td><details><summary>Desventajas</summary><p>Descripción de las desventajas del modelo de prototipos.</p></details></td></tr>
+            <tr><td><details><summary>Casos prácticos</summary><p>Descripción de casos prácticos del modelo de prototipos.</p></details></td></tr>
+        </table>
+        <table id="spiral-spanish" class="spanish-table">
+            <tr><th colspan="2"><h2>Modelo Espiral</h2><p>(introducción)</p></th></tr>
+            <tr><td><details><summary>Esquema del modelo de ciclo de vida</summary><p>Contenido del esquema del modelo de ciclo de vida.</p></details></td></tr>
+            <tr><td><details><summary>Características</summary><p>Descripción de las características del modelo de prototipos.</p></details></td></tr>
+            <tr><td><details><summary>Ventajas</summary><p>Descripción de las ventajas del modelo de prototipos.</p> </details></td></tr>
+            <tr><td><details><summary>Desventajas</summary><p>Descripción de las desventajas del modelo de prototipos.</p></details></td></tr>
+            <tr><td><details><summary>Casos prácticos</summary><p>Descripción de casos prácticos del modelo de prototipos.</p></details></td></tr>
+        </table>
+
+        <!-- Tablas en inglés -->
+        <table id="prototyping-english" class="english-table">
+            <tr><th colspan="2"><h2>Prototype Model</h2><p>(introduction)</p></th></tr>
+            <tr><td><details><summary>Lifecycle Model Scheme</summary><p>Content of the lifecycle model scheme.</p></details></td></tr>
+            <tr><td><details><summary>Characteristics</summary>
+                <ul>
+                    <li><strong>Time:</strong> The prototype is developed in less time to be tested.</li>
+                    <li><strong>Cost:</strong> Investment in a prototype model is adjusted, requiring optimal use of resources.</li>
+                    <li><strong>Concise:</strong> The prototype should include the basic requirements and features of the application to evaluate its functionality and usefulness.</li>
+                    <li><strong>Evolutionary:</strong> The prototype evolves thanks to user interaction.</li>
+                    <li><strong>Functional:</strong> The prototype is a working application.</li>
+                </ul>
+            </details></td></tr>
+            <tr><td><details><summary>Advantages</summary>
+                <ul>
+                    <li>Facilitates communication between developers and the client by providing a visual and functional representation of the system.</li>
+                    <li>Allows early detection of errors and problems, helping to reduce costs and risks associated with software development.</li>
+                    <li>Facilitates incorporating changes in the client's requirements and expectations, increasing client satisfaction and the likelihood of project success.</li>
+                    <li>Prototypes can be reused in the development phase, accelerating the process and reducing total development time.</li>
+                </ul>
+            </details></td></tr>
+            <tr><td><details><summary>Disadvantages</summary>
+                <ul>
+                    <li>May consume more time and resources compared to other development models, as it requires creating and reviewing multiple prototypes.</li>
+                    <li>There is a risk that developers focus on creating prototypes rather than addressing the fundamental aspects of the system.</li>
+                    <li>Clients may have unrealistic expectations about the time and resources needed to develop the final product, as prototypes can give an impression of rapid progress.</li>
+                    <li>There may be a lack of proper documentation and planning, which can affect the quality and stability of the final product.</li>
+                </ul>
+            </details></td></tr>
+            <tr><td><details><summary>Case Studies</summary>
+                <ul>
+                    <li><strong>Personal Website Design:</strong> Draw a simple sketch on paper, defining where the portfolio, skills, and contact form will go. Then, use WordPress or Wix to quickly create the website without needing to know how to code.</li>
+                    <li><strong>Restaurant Order App:</strong> Make a diagram of the order flow and use Glide to create a web app from a Google Sheets document. You can include menu, shopping cart, and ordering system without writing code.</li>
+                    <li><strong>Collaborative Task Management Platform:</strong> Use Notion to create a complete workspace with relational databases, kanban boards, and project documentation. Complement with integrations using Make (formerly Integromat).</li>
+                    <li><strong>Simple Reminders App:</strong> Leverage Bubble.io to create a full web application with user system, notifications, and personalized reminders without needing to code.</li>
+                    <li><strong>Donation Platform for NGOs:</strong> Implement the solution using Webflow + Stripe to create a professional donation platform with integrated payments and customized design.</li>
+                    <li><strong>Hotel Reservation System:</strong> Use Softr to create a web application connected to Airtable, allowing visual management of reservations, availability, and payments.</li>
+                    <li><strong>Health Tracking App:</strong> Implement the solution with Adalo, enabling the creation of native apps for iOS/Android with user system, metrics, and charts without code.</li>
+                    <li><strong>Local Commerce Payment System:</strong> Use FlutterFlow to create a mobile app with payment integration, user management, and administrative dashboard visually.</li>
+                    <li><strong>Inventory Management System:</strong> Implement the solution with AppSheet, creating a custom app from Google Sheets with barcode scanner and automatic alerts.</li>
+                    <li><strong>Language Learning App:</strong> Develop the app using Thunkable, allowing the creation of educational mobile applications with interactive elements, audio, and gamification without the need for code.</li>
+                </ul>
+            </details></td></tr>
+        </table>
+        
+        <table id="scrum-english" class="english-table">
+            <tr><th colspan="2"><h2>Scrum Model</h2></th></tr>
+            <tr><td><details><summary>Life Cycle Model Schema</summary><p>Content of the life cycle model schema.</p></details></td></tr>
+            <tr><td><details><summary>Features</summary><p>Description of the features of the prototype model.</p></details></td></tr>
+            <tr><td><details><summary>Advantages</summary><p>Description of the advantages of the prototype model.</p></details></td></tr>
+            <tr><td><details><summary>Disadvantages</summary><p>Description of the disadvantages of the prototype model.</p></details></td></tr>
+            <tr><td><details><summary>Practical Cases</summary><p>Description of practical cases of the prototype model.</p></details></td></tr>
+        </table>
+        <table id="spiral-english" class="english-table">
+            <tr><th colspan="2"><h2>Spiral Model</h2></th></tr>
+            <tr><td><details><summary>Life Cycle Model Schema</summary><p>Content of the life cycle model schema.</p></details></td></tr>
+            <tr><td><details><summary>Features</summary><p>Description of the features of the prototype model.</p></details></td></tr>
+            <tr><td><details><summary>Advantages</summary><p>Description of the advantages of the prototype model.</p></details></td></tr>
+            <tr><td><details><summary>Disadvantages</summary><p>Description of the disadvantages of the prototype model.</p></details></td></tr>
+            <tr><td><details><summary>Practical Cases</summary><p>Description of practical cases of the prototype model.</p></details></td></tr>
+        </table>
+    </div>
+
+    <div class="divextra">
+        <a href="juegos/iframe.html"><h2>Sección de dinámicas</h2></a>
+        <a href="ruta/a/contactos.html"><h2>Contactos</h2></a>
+    </div>
+    
+
+    <!-- Caja de comentarios -->
+    <h2>Comentarios / Comments</h2>
+    <textarea id="commentInput" placeholder="Escribe tu comentario aquí..."></textarea>
+    <button onclick="addComment()">Enviar</button>
+    <div class="comments" id="commentsContainer"></div>
+
+    <script>
+        function showLanguageContent(language) {
+            // Ocultar mensajes de bienvenida
+            document.getElementById('welcome-spanish').style.display = 'none';
+            document.getElementById('welcome-english').style.display = 'none';
+
+            // Mostrar el mensaje en el idioma seleccionado
+            document.getElementById(`welcome-${language}`).style.display = 'flex';
+
+            // Ocultar tablas
+            document.querySelectorAll('.spanish-table, .english-table').forEach(table => {
+                table.style.display = 'none';
+            });
+
+            // Mostrar tablas en el idioma seleccionado
+            document.querySelectorAll(`.${language}-table`).forEach(table => {
+                table.style.display = 'table';
+            });
+        }
+
+        // Funciones de la caja de comentarios
+        document.addEventListener('DOMContentLoaded', loadComments);
+
+        function addComment() {
+            const commentInput = document.getElementById("commentInput");
+            const commentText = commentInput.value.trim();
+
+            if (commentText) {
+                const comments = JSON.parse(localStorage.getItem("comments")) || [];
+                comments.push(commentText);
+                localStorage.setItem("comments", JSON.stringify(comments));
+                displayComment(commentText);
+                commentInput.value = "";
+            } else {
+                alert("Por favor, escribe un comentario.");
+            }
+        }
+
+        function loadComments() {
+            const comments = JSON.parse(localStorage.getItem("comments")) || [];
+            comments.forEach(displayComment);
+        }
+
+        function displayComment(text) {
+            const commentsContainer = document.getElementById("commentsContainer");
+            const commentElement = document.createElement("div");
+            commentElement.classList.add("comment");
+            commentElement.textContent = text;
+            commentsContainer.appendChild(commentElement);
+        }
+    </script>
+</body>
+</html>
