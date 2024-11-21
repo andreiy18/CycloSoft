@@ -319,9 +319,17 @@
     
 
     <!-- Caja de comentarios -->
-    <h2>Comentarios / Comments</h2>
-    <textarea id="commentInput" placeholder="Escribe tu comentario aquí..."></textarea>
-    <button onclick="addComment()">Enviar</button>
+    <h2>Comentarios</h2>
+    <div class="comment-box">
+        <label for="nameInput">Nombre:</label>
+        <input type="text" id="nameInput" placeholder="Escribe tu nombre">
+        
+        <label for="commentInput">Comentario:</label>
+        <textarea id="commentInput" placeholder="Escribe tu comentario aquí..."></textarea>
+        
+        <button onclick="addComment()">Enviar</button>
+    </div>
+
     <div class="comments" id="commentsContainer"></div>
 
     <script>
@@ -345,20 +353,20 @@
         }
 
         // Funciones de la caja de comentarios
-        document.addEventListener('DOMContentLoaded', loadComments);
+         function addComment() {
+            const nameInput = document.getElementById("nameInput").value.trim();
+            const commentInput = document.getElementById("commentInput").value.trim();
 
-        function addComment() {
-            const commentInput = document.getElementById("commentInput");
-            const commentText = commentInput.value.trim();
-
-            if (commentText) {
+            if (nameInput && commentInput) {
                 const comments = JSON.parse(localStorage.getItem("comments")) || [];
-                comments.push(commentText);
+                const newComment = { name: nameInput, text: commentInput };
+                comments.push(newComment);
                 localStorage.setItem("comments", JSON.stringify(comments));
-                displayComment(commentText);
-                commentInput.value = "";
+                displayComment(newComment);
+                document.getElementById("nameInput").value = "";
+                document.getElementById("commentInput").value = "";
             } else {
-                alert("Por favor, escribe un comentario.");
+                alert("Por favor, completa ambos campos.");
             }
         }
 
@@ -367,13 +375,15 @@
             comments.forEach(displayComment);
         }
 
-        function displayComment(text) {
+        function displayComment(comment) {
             const commentsContainer = document.getElementById("commentsContainer");
             const commentElement = document.createElement("div");
             commentElement.classList.add("comment");
-            commentElement.textContent = text;
+            commentElement.innerHTML = `<strong>${comment.name}:</strong><p>${comment.text}</p>`;
             commentsContainer.appendChild(commentElement);
         }
+
+        document.addEventListener('DOMContentLoaded', loadComments);
     </script>
 </body>
 </html>
