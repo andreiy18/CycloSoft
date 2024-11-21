@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redes Sociales</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f4ff, #d9e8ff);
+            color: #333;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0044cc;
+            color: white;
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        header .language-buttons,
+        header .social-logos {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header img {
+            cursor: pointer;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            transition: transform 0.2s, border-color 0.3s;
+        }
+
+        header .language-buttons img {
+            width: 50px;
+            height: 30px;
+        }
+
+        header .social-logos img {
+            width: 40px;
+            height: 40px;
+        }
+
+        header img:hover {
+            transform: scale(1.1);
+            border-color: #ffcc00;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        h2 {
+            color: #0044cc;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: white;
+            background: #0044cc;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .social-links a:hover {
+            background-color: #002a80;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="language-buttons">
+                <p id="language-text">Seleccione un idioma / Select a language</p>
+                <img src="eng.png" alt="English" onclick="changeLanguage('en')" />
+                <img src="mex.png" alt="Español" onclick="changeLanguage('es')" />
+            </div>
+            <div class="social-logos">
+                <p id="main-page-text">Regresar a la página principal / Return to main page</p>
+                <a href="index.html"><img src="casa.png" alt="Home"></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h2 id="main-title">Síguenos en nuestras Redes Sociales</h2>
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank" id="facebook-link">Facebook</a>
+            <a href="https://www.instagram.com" target="_blank" id="instagram-link">Instagram</a>
+            <p id="contact-info">📞 644-123-1234</p>
+        </div>
+        <footer id="footer-text">© 2024 - Todos los derechos reservados</footer>
+    </main>
+
+    <script>
+        // Función para cambiar idioma
+        function changeLanguage(lang) {
+            const translations = {
+                en: {
+                    languageText: "Select a language",
+                    mainPageText: "Return to main page",
+                    mainTitle: "Follow us on our Social Media",
+                    facebookLink: "Facebook",
+                    instagramLink: "Instagram",
+                    contactInfo: "📞 644-123-1234",
+                    footerText: "© 2024 - All rights reserved"
+                },
+                es: {
+                    languageText: "Seleccione un idioma",
+                    mainPageText: "Regresar a la página principal",
+                    mainTitle: "Síguenos en nuestras Redes Sociales",
+                    facebookLink: "Facebook",
+                    instagramLink: "Instagram",
+                    contactInfo: "📞 644-123-1234",
+                    footerText: "© 2024 - Todos los derechos reservados"
+                }
+            };
+
+            // Actualiza el contenido según el idioma
+            document.getElementById('language-text').textContent = translations[lang].languageText;
+            document.getElementById('main-page-text').textContent = translations[lang].mainPageText;
+            document.getElementById('main-title').textContent = translations[lang].mainTitle;
+            document.getElementById('facebook-link').textContent = translations[lang].facebookLink;
+            document.getElementById('instagram-link').textContent = translations[lang].instagramLink;
+            document.getElementById('contact-info').textContent = translations[lang].contactInfo;
+            document.getElementById('footer-text').textContent = translations[lang].footerText;
+        }
+    </script>
+</body>
+</html>
