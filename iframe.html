@@ -242,38 +242,38 @@
             }
 
             placeWords() {
-    const unplacedWords = [];
+                let placedWords = 0;
+                let maxAttempts = 1000;
 
-    for (let word of this.words) {
-        let placed = false;
-        let attempts = 0;
-        while (!placed && attempts < 500) { // Aumentamos los intentos
-            const direction = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-            const row = Math.floor(Math.random() * this.gridSize);
-            const col = Math.floor(Math.random() * this.gridSize);
+                while (placedWords < this.words.length && maxAttempts > 0) {
+                    this.createGrid(); // Reinicia la cuadrícula en cada intento
+                    placedWords = 0;
 
-            if (this.canPlaceWord(word, row, col, direction)) {
-                this.placeWord(word, row, col, direction);
-                placed = true;
+                    for (let word of this.words) {
+                        let placed = false;
+                        let attempts = 0;
+
+                        while (!placed && attempts < 100) {
+                            const direction = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+                            const row = Math.floor(Math.random() * this.gridSize);
+                            const col = Math.floor(Math.random() * this.gridSize);
+
+                            if (this.canPlaceWord(word, row, col, direction)) {
+                                this.placeWord(word, row, col, direction);
+                                placed = true;
+                                placedWords++;
+                            }
+                            attempts++;
+                        }
+                    }
+
+                    maxAttempts--;
+                }
+
+                if (placedWords < this.words.length) {
+                    console.error("No se pudo colocar todas las palabras en el tablero.");
+                }
             }
-            attempts++;
-        }
-
-        if (!placed) {
-            console.warn(`No se pudo colocar la palabra: ${word}`);
-            unplacedWords.push(word);
-        }
-    }
-
-    if (unplacedWords.length > 0) {
-        console.error("Palabras no colocadas:", unplacedWords);
-        document.getElementById('message').textContent = 
-            `No se pudieron colocar algunas palabras: ${unplacedWords.join(', ')}`;
-        // Reinicia el proceso de colocación
-        this.init(); 
-    }
-}
-
 
             canPlaceWord(word, row, col, direction) {
                 if (direction === 'horizontal') {
@@ -459,3 +459,4 @@
     </script>
 </body>
 </html>
+
