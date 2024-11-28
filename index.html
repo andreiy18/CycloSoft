@@ -150,27 +150,47 @@
         }
 
         /* Estilos para el índice */
+       
         .indice {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #e0e7ef; /* Fondo gris-azulado claro */
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    margin-top: 20px; /* Separación del mensaje de bienvenida */
+    margin-bottom: 20px; /* Separación de las tablas */
+    text-align: center;
+}
 
-        .indice a {
-            display: block;
-            margin: 5px 0;
-            color: #333;
-            text-decoration: none;
-            padding: 5px;
-            border-radius: 5px;
-        }
+.indice h2 {
+    margin-bottom: 10px;
+    font-size: 24px; /* Tamaño del encabezado del índice */
+    color: #333;
+}
 
-        .indice a:hover {
-            background-color: #d0d7df; /* Fondo gris-azulado más oscuro al pasar el cursor */
-            text-decoration: underline;
-        }
+.indice ul {
+    list-style: none; /* Sin viñetas */
+    padding: 0;
+    display: flex; /* Elementos en fila */
+    justify-content: center;
+    gap: 20px; /* Espaciado entre los enlaces */
+}
+
+.indice li {
+    display: inline; /* Elementos en línea */
+}
+
+.indice a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e0e7ef; /* Fondo gris-azulado */
+    transition: background-color 0.3s ease;
+}
+
+.indice a:hover {
+    background-color: #d0d7df; /* Fondo más oscuro al pasar el cursor */
+    text-decoration: underline;
+}
+
+
     </style>
 </head>
 <body>
@@ -191,27 +211,31 @@
         <img src="logo.jpg" class="Logo" alt="Logo">
         <h1>Bienvenido</h1>
         <p>¡Bienvenido a CycloSoft! Nos alegra tenerte aquí. Nuestro sitio está diseñado para estudiantes de doctorado bilingües interesados en profundizar en tres modelos fundamentales de desarrollo de software: Prototipos, Espiral y Scrum. Estos modelos ofrecen enfoques diversos y dinámicos para la gestión y creación de proyectos, cada uno con características únicas que pueden ser de gran utilidad para tus investigaciones y proyectos académicos. Explora cada sección para conocer más sobre estos modelos, sus ventajas y cómo pueden ser aplicados en distintos contextos. ¡Estamos aquí para apoyarte en tu camino académico y profesional, brindándote las herramientas necesarias para alcanzar el éxito! 🚀</p>
-        <br>
-        <div class="indice">
-            <h2>Índice</h2>
-            <a href="#prototyping-spanish">Modelo Prototipos (Español)</a>
-            <a href="#scrum-spanish">Modelo Scrum (Español)</a>
-            <a href="#spiral-spanish">Modelo Espiral (Español)</a>
-        </div>
     </div>
+    <div id="indice-spanish" class="indice" style="display: none;">
+        <h2>Índice</h2>
+        <ul>
+            <li><a href="#prototyping-spanish">Modelo Prototipos (Español)</a></li>
+            <li><a href="#scrum-spanish">Modelo Scrum (Español)</a></li>
+            <li><a href="#spiral-spanish">Modelo Espiral (Español)</a></li>
+        </ul>
+    </div>
+    
     <div id="welcome-english" class="PrimerDiv" style="display: none;">
         <img src="logo.jpg" class="Logo" alt="Logo">
         <h1>Welcome</h1>
         <p>Welcome to CycloSoft! We are pleased to have you here. Our site is designed for bilingual doctoral students interested in delving into three fundamental software development models: Prototypes, Spiral, and Scrum. These models offer diverse and dynamic approaches to project management and creation, each with unique features that can be highly useful for your research and academic projects. Explore each section to learn more about these models, their advantages, and how they can be applied in different contexts. We are here to support you on your academic and professional journey, providing you with the necessary tools for success! 🚀</p>
-        <br>
-        <div class="indice">
-            <h2>Indice</h2>
-            <a href="#prototyping-english">Prototyping Model (English)</a>
-            <a href="#scrum-english">Scrum Model (English)</a>
-            <a href="#spiral-english">Spiral Model (English)</a>
-        </div>
     </div>
-
+    <div id="indice-english" class="indice" style="display: none;">
+        <h2>Index</h2>
+        <ul>
+            <li><a href="#prototyping-english">Prototype Model (English)</a></li>
+            <li><a href="#scrum-english">Scrum Model (English)</a></li>
+            <li><a href="#spiral-english">Spiral Model (English)</a></li>
+        </ul>
+    </div>
+    
+    
     <!-- Contenedor de tablas -->
     <div class="tabla-container">
         <!-- Tablas en español -->
@@ -390,7 +414,7 @@
     <h2>Comentarios / Feedback</h2>
     <div class="comment-box">
         <label for="nameInput">Nombre / Name:</label>
-        <input type="text" id="nameInput" placeholder="Escribe tu nombre">
+        <input type="text" id="nameInput" placeholder="...">
         
         <label for="commentInput">Comentario / Comment:</label>
         <textarea id="commentInput" placeholder="..."></textarea>
@@ -402,23 +426,35 @@
 
     <script>
         function showLanguageContent(language) {
-            // Ocultar mensajes de bienvenida
-            document.getElementById('welcome-spanish').style.display = 'none';
-            document.getElementById('welcome-english').style.display = 'none';
+        // Ocultar mensajes de bienvenida
+        document.getElementById('welcome-spanish').style.display = 'none';
+        document.getElementById('welcome-english').style.display = 'none';
 
-            // Mostrar el mensaje en el idioma seleccionado
-            document.getElementById(`welcome-${language}`).style.display = 'flex';
+        // Ocultar índices
+        document.getElementById('indice-spanish').style.display = 'none';
+        document.getElementById('indice-english').style.display = 'none';
 
-            // Ocultar tablas
-            document.querySelectorAll('.spanish-table, .english-table').forEach(table => {
-                table.style.display = 'none';
-            });
+        // Mostrar el mensaje de bienvenida en el idioma seleccionado
+        document.getElementById(`welcome-${language}`).style.display = 'flex';
 
-            // Mostrar tablas en el idioma seleccionado
-            document.querySelectorAll(`.${language}-table`).forEach(table => {
-                table.style.display = 'table';
-            });
-        }
+        // Mostrar el índice correspondiente
+        document.getElementById(`indice-${language}`).style.display = 'block';
+
+        // Ocultar tablas
+        document.querySelectorAll('.spanish-table, .english-table').forEach(table => {
+            table.style.display = 'none';
+        });
+
+        // Mostrar tablas en el idioma seleccionado
+        document.querySelectorAll(`.${language}-table`).forEach(table => {
+            table.style.display = 'table';
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Mostrar contenido en español por defecto
+        showLanguageContent('spanish');
+    });
 
         // Funciones de la caja de comentarios
          function addComment() {
